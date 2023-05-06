@@ -1,0 +1,43 @@
+:root {
+    --LB: dodgerblue;
+}
+
+
+.navbar-brand {
+display:flex;
+color:azure;
+font-size: 50px;
+font-weight: bolder;
+}
+.navi 
+{
+ background-image: linear-gradient(to right, var(--LB), darkblue);
+}
+.cn
+{
+    font-size: 50px;
+
+}
+.button {
+    color:azure;
+    background-color: var(--LB);
+width: 80%;
+height:45px;
+border-radius: 5px ;
+border-color: white;
+font-size: 30px;
+}
+
+#City
+{ 
+    width:80%;
+height:50px;
+}
+
+
+.button:hover {
+    background-color: deepskyblue;
+    opacity: 0.9;
+}
+
+
