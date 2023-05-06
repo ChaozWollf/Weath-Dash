@@ -13,13 +13,18 @@
 const APIstorm = "46b8f30c47e39abae3cbe5ebea90da76"
 const city = $('.city-name');
 var cit= $('#city');
+const sity=JSON.parse(localStorage.getItem('Cname'));
 
 
+    const timer = window.setInterval(function() {
+        const Ctime = dayjs().format('MMMM:D:HH:mm')
+        var Date = $("<p></p>").text(Ctime.Val());
+        $(".navbar-brand").append(Date);
+        
+    }, 60000);
 
 
-
-
-
+console.log(timer)
 
 
 
@@ -28,7 +33,8 @@ var cit= $('#city');
 
 
 $('.button').on('click', function() {
+    const neu = cit
+    cit.push(neu)
     localStorage.setItem('Cname', JSON.stringify(cit.val()));
-    console.log (cit.val());
 
 });
