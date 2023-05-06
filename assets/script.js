@@ -63,5 +63,5 @@ $('.button').on('click', function() {
     const neu = cit
     cit.push(neu)
     localStorage.setItem('Cname', JSON.stringify(cit.val()));
-    weather
+    weather()
 });
