@@ -15,10 +15,14 @@ const city = $('.city-name');
 var cit = $('#city');
 const sity = JSON.parse(localStorage.getItem('Cname'));
 const sh = $('.SH');
-const ff = $('.ff')
+const ff = $('.FF')
 const uity = [];
-
-
+const current = $('.Current');
+const one = $('.one')
+const two = $('.two')
+const three = $('.three')
+const four = $('.four')
+const five = $('.five')
 
 
 https://api.openweathermap.org/data/2.5/weather?q=Toronto,CA&appid={yourkey}
@@ -28,10 +32,6 @@ https://api.openweathermap.org/data/2.5/weather?q=Toronto,CA&appid={yourkey}
 function weather() {
     const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cit.val()}&appid=${APIstorm}&units=imperial`
 
-   
-
-    // Parameters
-
 
     fetch(requestUrl)
         .then(function (response) {
@@ -40,29 +40,122 @@ function weather() {
         .then(function (data) {
             console.log(data);
             const cityName = data.name;
-            const temp = data.main.temp;
-            const desc = data.weather[0].description;
             const createTableRow = document.createElement('tr');
+            const desc = data.weather[0].description;
+            const temp = data.main.temp;
+            const wind = data.wind[1];
             const cityNameData = document.createElement('td');
-            cityNameData.textContent = cityName;
-            createTableRow.appendChild(cityNameData);
-            const tempData = document.createElement('td');
-            tempData.textContent = temp;
-            createTableRow.appendChild(tempData);
+            cityNameData.textContent = cityName; 
             const descData = document.createElement('td');
             descData.textContent = desc;
+            const tempData = document.createElement('tr');
+            tempData.textContent = temp;
+            const windData = document.createElement('tr');
+            windData.textContent = wind;
+            createTableRow.appendChild(cityNameData);
             createTableRow.appendChild(descData);
-            ff.appendChild(createTableRow);
-
+            createTableRow.appendChild(tempData);
+            createTableRow.appendChild(windData);
+            current.appendChild(createTableRow);
 
 
         });
 }
 
 
+function forcast() {
+    const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cit.val()}&appid=${APIstorm}&units=imperial`
 
 
+    fetch(requestUrl)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            const desc1 = data.list[0].weather[0].description;
+            const temp1 = data.list[0].main.temp;
+            const wind1 = data.list[0].wind[1];
+            const createTableRow1 = document.createElement('tr');
+            const descData1 = document.createElement('td');
+            descData1.textContent = desc1;
+            const tempData1 = document.createElement('tr');
+            tempData1.textContent = temp1;
+            const windData1 = document.createElement('tr');
+            windData1.textContent = wind1;
+            createTableRow1.appendChild(descData1);
+            createTableRow1.appendChild(tempData1);
+            createTableRow1.appendChild(windData1);
+            one.appendChild(createTableRow1);
+        })
+        .then(function (data) {
+            const desc2 = data.list[8].weather[0].description;
+            const temp2 = data.list[8].main.temp;
+            const wind2 = data.list[8].wind[1];
+            const createTableRow2 = document.createElement('tr');
+            const descData2 = document.createElement('td');
+            descData2.textContent = desc2;
+            const tempData2 = document.createElement('tr');
+            tempData2.textContent = temp2;
+            const windData2 = document.createElement('tr');
+            windData2.textContent = wind2;
+            createTableRow2.appendChild(descData2);
+            createTableRow2.appendChild(tempData2);
+            createTableRow2.appendChild(windData2);
+            two.appendChild(createTableRow2);
+        
+        })
+        .then(function (data) {
+            const desc3 = data.list[16].weather[0].description;
+            const temp3 = data.list[16].main.temp;
+            const wind3 = data.list[16].wind[1];
+            const createTableRow3 = document.createElement('tr');
+            const descData3 = document.createElement('td');
+            descData3.textContent = desc3;
+            const tempData3 = document.createElement('tr');
+            tempData3.textContent = temp3;
+            const windData3 = document.createElement('tr');
+            windData3.textContent = wind3;
+            createTableRow3.appendChild(descData3);
+            createTableRow3.appendChild(tempData3);
+            createTableRow3.appendChild(windData3);
+            three.appendChild(createTableRow3);
+        })
+        .then(function (data) {
+            const desc4 = data.list[24].weather[0].description;
+            const temp4 = data.list[24].main.temp;
+            const wind4 = data.list[24].wind[1];
+            const createTableRow4 = document.createElement('tr');
+            const descData4 = document.createElement('td');
+            descData4.textContent = desc4;
+            const tempData4 = document.createElement('tr');
+            tempData4.textContent = temp4;
+            const windData4 = document.createElement('tr');
+            windData4.textContent = wind4;
+            createTableRow4.appendChild(descData4);
+            createTableRow4.appendChild(tempData4);
+            createTableRow4.appendChild(windData4);
+            four.appendChild(createTableRow4);
 
+        })
+        .then(function (data) {
+            const desc5 = data.list[32].weather[0].description;
+            const temp5 = data.list[32].main.temp;
+            const wind5 = data.list[32].wind[1];
+            const createTableRow5 = document.createElement('tr');
+            const descData5 = document.createElement('td');
+            descData5.textContent = desc5;
+            const tempData5 = document.createElement('tr');
+            tempData5.textContent = temp5;
+            const windData5 = document.createElement('tr');
+            windData5.textContent = wind5;
+            createTableRow5.appendChild(descData5);
+            createTableRow5.appendChild(tempData5);
+            createTableRow5.appendChild(windData5);
+            five.appendChild(createTableRow5);
+})
+
+};
 
 const timer = window.setInterval(function () {
     const Ctime = dayjs().format('MMMM,D')
@@ -88,5 +181,6 @@ $('.button').on('click', function () {
         bity.textContent = uity[i];
         sh.append(bity);
         weather();
+        forcast();
     }
 });
