@@ -16,9 +16,11 @@ var cit= $('#city');
 const sity=JSON.parse(localStorage.getItem('Cname'));
 const sh = $('.SH');
 const ff= $('.ff')
+const uity = [];
+
 
 function weather(){
-const requestUrl = 'https://api.openweathermap.org / data / 2.5 / weather ? q = { cit } & APPID==={APIstorm}';
+    const requestUrl = "https://api.openweathermap.org / data / 2.5 / weather ? q = {cit}  & APPID==={APIstorm}";
 
 
 fetch(requestUrl)
@@ -26,19 +28,27 @@ fetch(requestUrl)
     return response.json();
 })
 .then(function(data) {
-    for(let i = 0; i <data.length; i++) {
-        const createTableRow=document.createElement('tr');
-        const tableData = document.createElement('td');
-        const link = document.createElement('a');
-        link.textContent = data[i].html_url;
-        link.href = data[i]/html_url;
-        tableData.appendChild(link);
-        createTableRow.appendChild(tableData)
-        ff.appendChild(createTableRow)
-    }
+    
+    const cityName = data.name;
+    const temp = data.main.temp;
+    const desc = data.weather[0].description;
+    const createTableRow = document.createElement('tr');
+    const cityNameData = document.createElement('td');
+    cityNameData.textContent = cityName;
+    createTableRow.appendChild(cityNameData);
+    const tempData = document.createElement('td');
+    tempData.textContent = temp;
+    createTableRow.appendChild(tempData);
+    const descData = document.createElement('td');
+    descData.textContent = desc;
+    createTableRow.appendChild(descData);
+    ff.appendChild(createTableRow);
+    
+    
+    
 });
-
-}
+}      
+    
 
 
 
@@ -60,8 +70,8 @@ $(".Nava").append(Date);
 
 
 $('.button').on('click', function() {
-    const neu = cit
-    cit.push(neu)
-    localStorage.setItem('Cname', JSON.stringify(cit.val()));
+    uity.push(cit[0]);
+    localStorage.setItem('Cname', JSON.stringify(uity));
     weather()
+    console.log(sity)
 });
