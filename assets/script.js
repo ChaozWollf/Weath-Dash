@@ -26,9 +26,9 @@ https://api.openweathermap.org/data/2.5/weather?q=Toronto,CA&appid={yourkey}
 
 
 function weather() {
-    const requestUrl = 'https://api.openweathermap.org/data/2.5/weather?q={cit.val()}&appid={44d550e17ada64b6e8f690bbafcd026a}'
+    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cit.val()}&appid=${APIstorm}&units=imperial`
 
-    // 'https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={46b8f30c47e39abae3cbe5ebea90da76}'
+   
 
     // Parameters
 
@@ -38,7 +38,7 @@ function weather() {
             return response.json();
         })
         .then(function (data) {
-
+            console.log(data);
             const cityName = data.name;
             const temp = data.main.temp;
             const desc = data.weather[0].description;
