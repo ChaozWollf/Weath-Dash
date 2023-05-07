@@ -19,8 +19,19 @@ const ff= $('.ff')
 const uity = [];
 
 
+
+
+
+
+
+
+
+
+
+
+
 function weather(){
-    const requestUrl = "https://api.openweathermap.org / data / 2.5 / weather ? q = {cit}  & APPID==={APIstorm}";
+    const requestUrl = "https://api.openweathermap.org/data/2.5/weather?q={cit.val()}&APPID==={APIstorm}";
 
 
 fetch(requestUrl)
@@ -70,8 +81,11 @@ $(".Nava").append(Date);
 
 
 $('.button').on('click', function() {
-    uity.push(cit[0]);
+    uity.push(cit.val());
     localStorage.setItem('Cname', JSON.stringify(uity));
-    weather()
-    console.log(sity)
-});
+for( i=0; i < uity.length; i++) {
+        const bity = document.createElement("button");
+        bity.textContent = uity[i];
+        bity.append(sh);
+   
+}});
