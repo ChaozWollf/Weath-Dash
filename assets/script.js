@@ -43,7 +43,7 @@ function weather() {
             const temp = data.main.temp;
             const wind = data.wind[1];
             const cityNameData = document.createElement('td');
-            cityNameData.textContent = cityName; 
+            cityNameData.textContent = cityName;
             const descData = document.createElement('td');
             descData.textContent = desc;
             const tempData = document.createElement('tr');
@@ -85,8 +85,6 @@ function forcast() {
             createTableRow1.appendChild(tempData1);
             createTableRow1.appendChild(windData1);
             one[0].appendChild(createTableRow1);
-        })
-        .then(function (data) {
             const desc2 = data.list[8].weather[0].description;
             const temp2 = data.list[8].main.temp;
             const wind2 = data.list[8].wind[1];
@@ -101,9 +99,6 @@ function forcast() {
             createTableRow2.appendChild(tempData2);
             createTableRow2.appendChild(windData2);
             two[0].appendChild(createTableRow2);
-        
-        })
-        .then(function (data) {
             const desc3 = data.list[16].weather[0].description;
             const temp3 = data.list[16].main.temp;
             const wind3 = data.list[16].wind[1];
@@ -118,8 +113,6 @@ function forcast() {
             createTableRow3.appendChild(tempData3);
             createTableRow3.appendChild(windData3);
             three[0].appendChild(createTableRow3);
-        })
-        .then(function (data) {
             const desc4 = data.list[24].weather[0].description;
             const temp4 = data.list[24].main.temp;
             const wind4 = data.list[24].wind[1];
@@ -134,9 +127,6 @@ function forcast() {
             createTableRow4.appendChild(tempData4);
             createTableRow4.appendChild(windData4);
             four[0].appendChild(createTableRow4);
-
-        })
-        .then(function (data) {
             const desc5 = data.list[32].weather[0].description;
             const temp5 = data.list[32].main.temp;
             const wind5 = data.list[32].wind[1];
@@ -151,7 +141,7 @@ function forcast() {
             createTableRow5.appendChild(tempData5);
             createTableRow5.appendChild(windData5);
             five[0].appendChild(createTableRow5);
-})
+        })
 
 };
 
