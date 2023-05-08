@@ -25,8 +25,6 @@ const four = $('.four')
 const five = $('.five')
 
 
-https://api.openweathermap.org/data/2.5/weather?q=Toronto,CA&appid={yourkey}
-
 
 
 function weather() {
@@ -56,7 +54,7 @@ function weather() {
             createTableRow.appendChild(descData);
             createTableRow.appendChild(tempData);
             createTableRow.appendChild(windData);
-            current.appendChild(createTableRow);
+            current[0].appendChild(createTableRow);
 
 
         });
@@ -86,7 +84,7 @@ function forcast() {
             createTableRow1.appendChild(descData1);
             createTableRow1.appendChild(tempData1);
             createTableRow1.appendChild(windData1);
-            one.appendChild(createTableRow1);
+            one[0].appendChild(createTableRow1);
         })
         .then(function (data) {
             const desc2 = data.list[8].weather[0].description;
@@ -102,7 +100,7 @@ function forcast() {
             createTableRow2.appendChild(descData2);
             createTableRow2.appendChild(tempData2);
             createTableRow2.appendChild(windData2);
-            two.appendChild(createTableRow2);
+            two[0].appendChild(createTableRow2);
         
         })
         .then(function (data) {
@@ -119,7 +117,7 @@ function forcast() {
             createTableRow3.appendChild(descData3);
             createTableRow3.appendChild(tempData3);
             createTableRow3.appendChild(windData3);
-            three.appendChild(createTableRow3);
+            three[0].appendChild(createTableRow3);
         })
         .then(function (data) {
             const desc4 = data.list[24].weather[0].description;
@@ -135,7 +133,7 @@ function forcast() {
             createTableRow4.appendChild(descData4);
             createTableRow4.appendChild(tempData4);
             createTableRow4.appendChild(windData4);
-            four.appendChild(createTableRow4);
+            four[0].appendChild(createTableRow4);
 
         })
         .then(function (data) {
@@ -152,7 +150,7 @@ function forcast() {
             createTableRow5.appendChild(descData5);
             createTableRow5.appendChild(tempData5);
             createTableRow5.appendChild(windData5);
-            five.appendChild(createTableRow5);
+            five[0].appendChild(createTableRow5);
 })
 
 };
