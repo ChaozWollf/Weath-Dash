@@ -28,8 +28,9 @@ const five = $('.five');
 function weather() {
     const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cit.val()}&appid=${APIstorm}&units=imperial`;
 
+  
     
-    fetch(requestUrl)
+   fetch(requestUrl)
         .then(function (response) {
             return response.json();
         })
@@ -37,7 +38,8 @@ function weather() {
             console.log(data);
             const cityName = data.name;
             const createTableRow = document.createElement('tr');
-            const icon = data.weather[0].icon
+            const icon = data.weather.icon;
+            <img src = "https://openweathermap.org/img/wn/${icon}@2x.png"></img>;
             const desc = data.weather[0].description;
             const temp = data.main.temp;
             const wind = data.wind.speed;
@@ -51,6 +53,7 @@ function weather() {
             const windData = document.createElement('tr');
             windData.textContent ="Wind:" + wind + " mph";
             createTableRow.appendChild(cityNameData);
+            createTableRow.appendChild(img)
             createTableRow.appendChild(descData);
             createTableRow.appendChild(tempData);
             createTableRow.appendChild(windData);
