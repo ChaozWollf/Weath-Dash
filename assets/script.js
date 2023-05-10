@@ -170,7 +170,7 @@ function forcast() {
 const timer = window.setInterval(function () {
     const Ctime = dayjs().format('MMMM,D')
     var Date = $("<p></p>").text(Ctime);
-    $("Nava").text(Date[0].outerText);
+    $(".Nava").text(Date[0].outerText);
 
 }, 1000);
 
