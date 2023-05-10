@@ -15,22 +15,20 @@ const city = $('.city-name');
 var cit = $('#city');
 const sity = JSON.parse(localStorage.getItem('Cname'));
 const sh = $('.SH');
-const ff = $('.FF')
+const ff = $('.FF');
 const uity = [];
 const current = $('.Current');
-const one = $('.one')
-const two = $('.two')
-const three = $('.three')
-const four = $('.four')
-const five = $('.five')
-
-
+const one = $('.one');
+const two = $('.two');
+const three = $('.three');
+const four = $('.four');
+const five = $('.five');
 
 
 function weather() {
-    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cit.val()}&appid=${APIstorm}&units=imperial`
+    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cit.val()}&appid=${APIstorm}&units=imperial`;
 
-
+    
     fetch(requestUrl)
         .then(function (response) {
             return response.json();
@@ -39,11 +37,13 @@ function weather() {
             console.log(data);
             const cityName = data.name;
             const createTableRow = document.createElement('tr');
+            const icon = data.weather[0].icon
             const desc = data.weather[0].description;
             const temp = data.main.temp;
             const wind = data.wind.speed;
             const cityNameData = document.createElement('td');
             cityNameData.textContent = cityName;
+            console.log(icon)
             const descData = document.createElement('td');
             descData.textContent = desc;
             const tempData = document.createElement('tr');
@@ -170,11 +170,12 @@ $('.button').on('click', function () {
     three.html("");
     four.html("");
     five.html("");
+    weather();
+    forcast();
     for (i = 0; i < uity.length; i++) {
         const bity = document.createElement("button");
         bity.textContent = uity[i];
         sh.append(bity);
-        weather();
-        forcast();
+      
     }
 });
