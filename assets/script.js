@@ -23,6 +23,31 @@ const two = $('.two');
 const three = $('.three');
 const four = $('.four');
 const five = $('.five');
+const currentDate = dayjs();
+const nextFiveDates = [];
+
+
+for (let i = 1; i <= 5; i++) {
+    const nextDate = currentDate.add(i, 'day');
+    nextFiveDates.push(nextDate);
+}
+
+ currentDate.format('YYYY-MM-DD');
+console.log('Next five dates:');
+nextFiveDates.forEach(date => console.log(date.format('YYYY-MM-DD')));
+
+
+
+
+
+const timer = window.setInterval(function () {
+    const Ctime = dayjs().format('MMMM,D')
+    var Date = $("<p></p>").text(Ctime);
+    $(".Nava").text(Date[0].outerText);
+
+}, 1000);
+
+$(".Nava").append(Date);
 
 
 function weather(rity) {
@@ -35,7 +60,6 @@ function weather(rity) {
             return response.json();
         })
         .then(function (data) {
-            const day = dayjs
             const cityName = data.name;
             const createTableRow = document.createElement('tr');
             const icon = data.weather[0].icon;
@@ -53,7 +77,8 @@ function weather(rity) {
             const windData = document.createElement('tr');
             windData.textContent ="Wind:" + wind + " mph";
             createTableRow.appendChild(cityNameData);
-            createTableRow.appendChild(img)
+            createTableRow.append(currentDate);
+            createTableRow.appendChild(img);
             createTableRow.appendChild(descData);
             createTableRow.appendChild(tempData);
             createTableRow.appendChild(windData);
@@ -86,6 +111,7 @@ function forcast(rity) {
             tempData1.textContent ="Temp: "+ temp1+ "F";
             const windData1 = document.createElement('tr');
             windData1.textContent = "Wind:"+ wind1 + " mph" ;
+            createTableRow1.append(nextFiveDates[0]);
             createTableRow1.appendChild(img0);
             createTableRow1.appendChild(descData1);
             createTableRow1.appendChild(tempData1);
@@ -104,6 +130,7 @@ function forcast(rity) {
             tempData2.textContent = "Temp:" + temp2 + " F";
             const windData2 = document.createElement('tr');
             windData2.textContent ="Wind:" + wind2 + " mph";
+            createTableRow2.append(nextFiveDates[1]);
             createTableRow2.appendChild(img8);
             createTableRow2.appendChild(descData2);
             createTableRow2.appendChild(tempData2);
@@ -122,6 +149,8 @@ function forcast(rity) {
             tempData3.textContent = "Temp:" + temp3 + " F";
             const windData3 = document.createElement('tr');
             windData3.textContent = "Wind:" + wind3 + " mph"; ;
+            
+            createTableRow3.append(nextFiveDates[2]);
             createTableRow3.appendChild(img16);
             createTableRow3.appendChild(descData3);
             createTableRow3.appendChild(tempData3);
@@ -140,6 +169,7 @@ function forcast(rity) {
             tempData4.textContent = "Temp:" + temp4 + " F";
             const windData4 = document.createElement('tr');
             windData4.textContent = "Wind:" + wind4 + " mph";;
+            createTableRow4.append(nextFiveDates[3]);
             createTableRow4.appendChild(img24);
             createTableRow4.appendChild(descData4);
             createTableRow4.appendChild(tempData4);
@@ -158,6 +188,7 @@ function forcast(rity) {
             tempData5.textContent = "Temp:" + temp5 + " F" ;
             const windData5 = document.createElement('tr');
             windData5.textContent = "Wind:" + wind5 + " mph";
+            createTableRow5.append(nextFiveDates[4]);
             createTableRow5.appendChild(img32);
             createTableRow5.appendChild(descData5);
             createTableRow5.appendChild(tempData5);
@@ -166,15 +197,6 @@ function forcast(rity) {
         })
 
 };
-
-const timer = window.setInterval(function () {
-    const Ctime = dayjs().format('MMMM,D')
-    var Date = $("<p></p>").text(Ctime);
-    $(".Nava").text(Date[0].outerText);
-
-}, 1000);
-
-$(".Nava").append(Date);
 
 
 $('.button').on('click', function () {
