@@ -201,3 +201,16 @@ $('.button').on('click', function () {
       
     }
 });
+
+$(uity).on('click'), function(){
+    (cit.val()).push(uity.textContent())
+    sh.html("");
+    current.html("");
+    one.html("");
+    two.html("");
+    three.html("");
+    four.html("");
+    five.html("");
+    weather();
+    forcast();
+}
