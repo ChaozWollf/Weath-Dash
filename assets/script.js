@@ -25,8 +25,8 @@ const four = $('.four');
 const five = $('.five');
 
 
-function weather() {
-    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cit.val()}&appid=${APIstorm}&units=imperial`;
+function weather(rity) {
+    const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${rity}&appid=${APIstorm}&units=imperial`;
 
   
     
@@ -35,8 +35,7 @@ function weather() {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
-            const day=dayjs
+            const day = dayjs
             const cityName = data.name;
             const createTableRow = document.createElement('tr');
             const icon = data.weather[0].icon;
@@ -65,8 +64,8 @@ function weather() {
 }
 
 
-function forcast() {
-    const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${cit.val()}&appid=${APIstorm}&units=imperial`
+function forcast(rity) {
+    const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${rity}&appid=${APIstorm}&units=imperial`
 
 
     fetch(requestUrl)
@@ -178,12 +177,8 @@ const timer = window.setInterval(function () {
 $(".Nava").append(Date);
 
 
-
-
-
-
-
 $('.button').on('click', function () {
+    var rity = cit.val();
     uity.push(cit.val());
     localStorage.setItem('Cname', JSON.stringify(uity));
     sh.text("");
@@ -193,26 +188,28 @@ $('.button').on('click', function () {
     three.text("");
     four.text("");
     five.text("");
-    weather();
-    forcast();
+    weather(rity);
+    forcast(rity);
     for (i = 0; i < uity.length; i++) {
         const bity = document.createElement("button");
         bity.classList.add("hope");
         bity.textContent = uity[i];
+        bity.addEventListener('click', event => {
+            var rity = event.target.innerHTML;
+            console.log(event.target.innerHTML);
+            current.text("");
+            one.text("");
+            two.text("");
+            three.text("");
+            four.text("");
+            five.text("");
+            weather(rity);
+            forcast(rity);
+        });
         sh.append(bity);
-      
     }
 });
 
-$(document).on('click', '.hope'), function() {
-    uity.push($(this).text());
-    sh.text("");
-    current.text("");
-    one.text("");
-    two.text("");
-    three.text("");
-    four.text("");
-    five.text("");
-    weather();
-    forcast();
-};
+
+
+
