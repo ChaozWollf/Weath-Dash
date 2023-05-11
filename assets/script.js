@@ -36,6 +36,7 @@ function weather() {
         })
         .then(function (data) {
             console.log(data);
+            const day=dayjs
             const cityName = data.name;
             const createTableRow = document.createElement('tr');
             const icon = data.weather[0].icon;
@@ -185,32 +186,33 @@ $(".Nava").append(Date);
 $('.button').on('click', function () {
     uity.push(cit.val());
     localStorage.setItem('Cname', JSON.stringify(uity));
-    sh.html("");
-    current.html("");
-    one.html("");
-    two.html("");
-    three.html("");
-    four.html("");
-    five.html("");
+    sh.text("");
+    current.text("");
+    one.text("");
+    two.text("");
+    three.text("");
+    four.text("");
+    five.text("");
     weather();
     forcast();
     for (i = 0; i < uity.length; i++) {
         const bity = document.createElement("button");
+        bity.classList.add("hope");
         bity.textContent = uity[i];
         sh.append(bity);
       
     }
 });
 
-$(uity).on('click'), function(){
-    (cit.val()).push(uity.textContent())
-    sh.html("");
-    current.html("");
-    one.html("");
-    two.html("");
-    three.html("");
-    four.html("");
-    five.html("");
+$(document).on('click', '.hope'), function() {
+    uity.push($(this).text());
+    sh.text("");
+    current.text("");
+    one.text("");
+    two.text("");
+    three.text("");
+    four.text("");
+    five.text("");
     weather();
     forcast();
-}
+};
