@@ -1,14 +1,4 @@
-//variable to hold the input for city name
-//variable to hold past selected cities
-//a set and get for local storage (cities)
-//a push to be able to add city names to info in local storage
-//a form to be able to hold previously selected cities
-//a form to hold the 5 day weather info
-//weather icons
-//a form to hold current weather data
-// day.js to be able to get the current date/time
-//make sure to get the weather conditions, tempurature, humidity, and windspeed
-//
+
 
 const APIstorm = "46b8f30c47e39abae3cbe5ebea90da76"
 const city = $('.city-name');
@@ -33,12 +23,10 @@ for (let i = 1; i <= 5; i++) {
 }
 
  currentDate.format('YYYY-MM-DD');
-console.log('Next five dates:');
-nextFiveDates.forEach(date => console.log(date.format('YYYY-MM-DD')));
 
 
 
-
+// Date in corner
 
 const timer = window.setInterval(function () {
     const Ctime = dayjs().format('MMMM,D')
@@ -49,7 +37,7 @@ const timer = window.setInterval(function () {
 
 $(".Nava").append(Date);
 
-
+// current weather function with appends for display
 function weather(rity) {
     const requestUrl = `https://api.openweathermap.org/data/2.5/weather?q=${rity}&appid=${APIstorm}&units=imperial`;
 
@@ -88,7 +76,7 @@ function weather(rity) {
         });
 }
 
-
+// future forcast with appends for display
 function forcast(rity) {
     const requestUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${rity}&appid=${APIstorm}&units=imperial`
 
@@ -198,7 +186,7 @@ function forcast(rity) {
 
 };
 
-
+// Button for display and retrieval of previous seach 
 $('.button').on('click', function () {
     var rity = cit.val();
     uity.push(cit.val());
